@@ -13,7 +13,6 @@ function Todo({ todo, index, completeTodo, deleteTodo, editTodo }) {
     const handleSubmit = (event) => {
       event.preventDefault();
       editTodo(index, newName);
-      setNewName("");
       setEditing(false);
     };
   
