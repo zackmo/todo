@@ -3,8 +3,14 @@ import Form from "./components/Form.js";
 import Todo from "./components/Todo.js";
 import './App.css';
 
-function App() {
-  const [todos, setTodos] = React.useState([]);
+function TodoApp() {
+  const savedItems = JSON.parse(localStorage.getItem('todos'));
+
+  const [todos, setTodos] = React.useState(savedItems || []);
+  
+  React.useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = text => {
     const newTodos = [...todos, { text, isEditing: false }];
@@ -49,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default TodoApp;
